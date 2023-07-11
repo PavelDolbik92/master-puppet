@@ -1,6 +1,5 @@
-node default {
-  file { '/root/README':
-    ensure => file,
-    content => 'Hello, world',
+node slave2.puppet {
+  package { 'apatch2':
+    ensure => 'present',
   }
 }
