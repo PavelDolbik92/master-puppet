@@ -1,5 +1,11 @@
 node slave2.puppet {
-  package { 'apatch2':
+  package { 'httpd':
+    ensure => 'present',
+  }
+}
+
+node slave1.puppet {
+  package { 'php':
     ensure => 'present',
   }
 }
