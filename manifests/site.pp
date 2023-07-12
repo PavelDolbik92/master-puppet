@@ -10,9 +10,9 @@ node slave1.puppet {
     ensure => 'installed',
   }
 
-  file { '/vagrant/index.html':
+  file { '/var/www/html/index.html':
           ensure => present,
-          source => "/var/www/html/index.html",
+          source => "/vagrant/index.html",
   }
    
   service { 'httpd':
@@ -30,6 +30,11 @@ node slave2.puppet {
     ensure => 'installed',
   }
 
+  file { '/var/www/html/index.php':
+          ensure => present,
+          source => "/vagrant/index.php",
+  }
+  
   service { 'httpd':
      ensure => running,
      enable => true,
