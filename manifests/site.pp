@@ -17,8 +17,11 @@ node slave1.puppet {
 }
 
 node slave2.puppet {
-  $packages = [ 'httpd', 'php' ]
-  package { $packages:
+  package { 'httpd':
+    ensure => 'installed',
+  }
+
+  package { 'php':
     ensure => 'installed',
   }
 
