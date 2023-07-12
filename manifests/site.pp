@@ -10,6 +10,11 @@ node slave1.puppet {
     ensure => 'installed',
   }
 
+  file { '/vagrant/index.html':
+          ensure => present,
+          source => "/var/www/html/index.html",
+  }
+   
   service { 'httpd':
      ensure => running,
      enable => true,
