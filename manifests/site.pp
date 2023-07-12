@@ -1,10 +1,3 @@
-node default {
-   service { 'firewalld':
-     ensure => stopped,
-     enable => false,
-   }
-}
-
 node slave1.puppet {
   package { 'httpd':
     ensure => 'installed',
@@ -18,6 +11,11 @@ node slave1.puppet {
   service { 'httpd':
      ensure => running,
      enable => true,
+   }
+
+   service { 'firewalld':
+     ensure => stopped,
+     enable => false,
    }
 }
 
@@ -38,5 +36,10 @@ node slave2.puppet {
   service { 'httpd':
      ensure => running,
      enable => true,
+   }
+
+   service { 'firewalld':
+     ensure => stopped,
+     enable => false,
    }
 }
