@@ -1,5 +1,5 @@
 node default {
-   service {
+   service { 'firewalld':
      ensure => stopped,
      enable => false,
    }
