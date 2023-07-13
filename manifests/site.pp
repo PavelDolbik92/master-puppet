@@ -7,8 +7,29 @@ node master.puppet {
     ensure => 'installed',
   }
 
-  package { 'policycoreutils-python':
-    ensure => 'installed',
+  exec {"disable silinux":
+    command => 'sudo setenforce 0',
+    provider => shell,
+  }
+
+  service { 'firewalld':
+    ensure => stopped,
+    enable => false,
+  }
+
+  file { '/etc/nginx/nginx.conf':
+    ensure => present,
+    source => "/vagrant/nginx.conf",
+  }
+
+  service { 'nginx':
+    ensure => running,
+    enable => true,
+  }
+
+  service { 'php-fpm':
+    ensure => running,
+    enable => true,
   }
 }
 
