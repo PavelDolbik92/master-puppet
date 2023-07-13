@@ -6,6 +6,10 @@ node master.puppet {
   package { 'php-fpm':
     ensure => 'installed',
   }
+
+  package { 'policycoreutils-python':
+    ensure => 'installed',
+  }
 }
 
 node slave1.puppet {
