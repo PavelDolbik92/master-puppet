@@ -4,6 +4,12 @@ node master.puppet {
   }
 }
 
+node mineserver.puppet {
+  package { 'httpd':
+    ensure => 'installed',
+  }
+}
+
 node slave1.puppet {
   package { 'httpd':
     ensure => 'installed',
