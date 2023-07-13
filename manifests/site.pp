@@ -1,9 +1,3 @@
-node master.puppet {
-  package { 'nginx':
-    ensure => 'purged',
-  }
-}
-
 node mineserver.puppet {
   package { 'httpd':
     ensure => 'installed',
