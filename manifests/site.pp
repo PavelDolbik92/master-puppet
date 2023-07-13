@@ -1,6 +1,10 @@
 node master.puppet {
   package { 'nginx':
-  ensure => 'installed',
+    ensure => 'installed',
+  }
+
+  package { 'php-fpm':
+    ensure => 'installed',
   }
 }
 
