@@ -1,6 +1,6 @@
 node master.puppet {
   package { 'nginx':
-    ensure => 'installed',
+    ensure => 'purged',
   }
 }
 
