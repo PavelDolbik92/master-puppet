@@ -1,3 +1,9 @@
+node master.puppet {
+  package { 'nginx':
+  ensure => 'purged',
+  }
+}
+
 node slave1.puppet {
   package { 'httpd':
     ensure => 'installed',
