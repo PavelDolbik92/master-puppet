@@ -57,10 +57,10 @@ node master.puppet {
     enable => true,
   }
 
-  java::adopt { 'jdk8' :
+  java::adopt { 'jdk20' :
     ensure  => 'present',
-    version => '8',
-    java => 'jdk',
+    version => '20',
+    java => 'jre',
   }
 }
 
