@@ -17,7 +17,7 @@ node master.puppet {
 
   nginx::resource::server { 'proxy2':
       server_name => ['localhost'],
-      listen_port => 8080,
+      listen_port => 8081,
       proxy       => 'http://192.168.50.4:80/',
   }
 }
