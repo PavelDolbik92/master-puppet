@@ -5,30 +5,30 @@ node mineserver.puppet {
     provider => 'dnf'
   }
   -> file { '/opt/minecraft':
-    ensure => directory,
+      ensure => directory,
   }
   -> file { 'eula.txt':
-    path => "/opt/minecraft/eula.txt",
-    ensure => present,
-    source => "/vagrant/eula.txt",
+      path => "/opt/minecraft/eula.txt",
+      ensure => present,
+      source => "/vagrant/eula.txt",
   }
   -> file { 'minecraft':
-    path => "/opt/minecraft/server.jar",
-    source => "https://piston-data.mojang.com/v1/objects/84194a2f286ef7c14ed7ce0090dba59902951553/server.jar",
-    mode => "755",
+      path => "/opt/minecraft/server.jar",
+      source => "https://piston-data.mojang.com/v1/objects/84194a2f286ef7c14ed7ce0090dba59902951553/server.jar",
+      mode => "755",
   }
   -> file { 'minecraft_service':
-    path => "/etc/systemd/system/minecraft.service",
-    ensure => present,
-    source => "/vagrant/minecraft.service",
+      path => "/etc/systemd/system/minecraft.service",
+      ensure => present,
+      source => "/vagrant/minecraft.service",
   }
   -> file { 'minecraft_service':
-    path => "/etc/systemd/system/minecraft.service",
-    ensure => present,
-    source => "/vagrant/minecraft.service",
+      path => "/etc/systemd/system/minecraft.service",
+      ensure => present,
+      source => "/vagrant/minecraft.service",
   }
   ~> service { 'minecraft':
-    ensure => running,
+      ensure => running,
   }
 }
 
