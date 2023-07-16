@@ -22,11 +22,6 @@ node mineserver.puppet {
       ensure => present,
       source => "/vagrant/minecraft.service",
   }
-  -> file { 'minecraft_service':
-      path => "/etc/systemd/system/minecraft.service",
-      ensure => present,
-      source => "/vagrant/minecraft.service",
-  }
   ~> service { 'minecraft':
       ensure => running,
   }
