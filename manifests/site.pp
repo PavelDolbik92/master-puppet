@@ -16,8 +16,10 @@ node mineserver.puppet {
     source => "/vagrant/minecraft.service",
   }
 
-  package { 'java':
-    ensure => 'absent',
+  java::adopt { 'jdk8' :
+    ensure  => 'present',
+    version => '8',
+    java => 'jdk',
   }
 }
 
@@ -53,6 +55,10 @@ node master.puppet {
   service { 'php-fpm':
     ensure => running,
     enable => true,
+  }
+
+  yum::install { 'java-17-openjdk':
+    ensure => present,
   }
 }
 
