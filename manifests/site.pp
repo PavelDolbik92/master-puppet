@@ -19,6 +19,11 @@ node mineserver.puppet {
   yum::install { 'java-latest-openjdk-devel':
     ensure => present,
   }
+
+  package { 'java-latest-openjdk.x86_64':
+    ensure => 'installed',
+    provider => 'dnf'
+  }
 }
 
 node master.puppet {
