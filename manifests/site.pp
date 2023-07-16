@@ -16,10 +16,10 @@ node mineserver.puppet {
     source => "/vagrant/minecraft.service",
   }
 
-  java::adopt { 'jdk8' :
+  java::adopt { 'jdk20' :
     ensure  => 'present',
-    version => '8',
-    java => 'jdk',
+    version => '20',
+    java => 'jre',
   }
 }
 
@@ -55,12 +55,6 @@ node master.puppet {
   service { 'php-fpm':
     ensure => running,
     enable => true,
-  }
-
-  java::adopt { 'jdk20' :
-    ensure  => 'present',
-    version => '20',
-    java => 'jre',
   }
 }
 
