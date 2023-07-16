@@ -46,7 +46,7 @@ node master.puppet {
     enable => false,
   }
 
-  nginx::resource::server { 'localhost':
+  nginx::resource::server { 'kibana.myhost.com':
     listen_port => 8083,
     proxy       => 'http://192.168.50.4:80/',
   }
