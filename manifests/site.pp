@@ -1,4 +1,9 @@
 node mineserver.puppet {
+  package { 'java-latest-openjdk.x86_64':
+  ensure => 'installed',
+    provider => 'dnf'
+  }
+
   file { '/opt/minecraft':
     ensure => directory,
     before => File['minecraft'],
@@ -11,14 +16,17 @@ node mineserver.puppet {
     require => File['/opt/minecraft'],
   }
 
-  file { '/opt/minecraft/minecraft.service':
+  file { 'minecraft_service':
+    path => "/opt/minecraft/minecraft.service",
     ensure => present,
     source => "/vagrant/minecraft.service",
+    notify => Service["minecraft"]
   }
 
-  package { 'java-latest-openjdk.x86_64':
-    ensure => 'installed',
-    provider => 'dnf'
+  service { 'minecraft':
+    ensure => running,
+    require => File["minecraft_service"]
+
   }
 }
 
