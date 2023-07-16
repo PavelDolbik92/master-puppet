@@ -28,33 +28,11 @@ node mineserver.puppet {
 }
 
 node master.puppet {
-  package { 'nginx':
-    ensure => 'installed',
-  }
+  class{'nginx': }
 
-  package { 'php-fpm':
-    ensure => 'installed',
-  }
-
-  exec {"disable silinux":
-    command => 'sudo setenforce 0',
-    provider => shell,
-  }
-
-  service { 'firewalld':
-    ensure => stopped,
-    enable => false,
-  }
-
-  class {
-    'nginx':;
-  }
-
-  nginx::resource::server { 'test.local:8080':
-    ensure      => present,
-    listen_port => 8083,
-    server_name => ['test.local test'],
-    proxy       => 'http://proxypass',
+  nginx::resource::location{ '/blog':
+    proxy => 'http://192.168.99.1/',
+    server => 'www.myhost.com',
   }
 }
 
