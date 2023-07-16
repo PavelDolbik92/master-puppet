@@ -16,10 +16,8 @@ node mineserver.puppet {
     source => "/vagrant/minecraft.service",
   }
 
-  java::download { 'jdk19' :
-    ensure  => "present",
-    java_se => "jre",
-    url     => "https://rpmfind.net/linux/openmandriva/cooker/repository/x86_64/main/release/java-19-openjdk-19.0.2.7-1-omv2390.x86_64.rpm",
+  package { 'java':
+    ensure => 'latest',
   }
 }
 
