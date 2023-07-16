@@ -30,9 +30,9 @@ node mineserver.puppet {
 node master.puppet {
   class{'nginx': }
 
-  nginx::resource::location{ '/blog':
-    proxy => 'http://192.168.99.1/',
-    server => 'www.myhost.com',
+  nginx::resource::server { 'kibana.myhost.com':
+    listen_port => 80,
+    proxy       => 'http://localhost:5601',
   }
 }
 
