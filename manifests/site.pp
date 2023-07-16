@@ -10,6 +10,10 @@ node mineserver.puppet {
     mode => "755",
     require => File['/opt/minecraft'],
   }
+
+  class { 'java':
+    distribution => 'jre',
+  }
 }
 
 node master.puppet {
