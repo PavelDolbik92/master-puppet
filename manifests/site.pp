@@ -1,30 +1,5 @@
 node mineserver.puppet {
-  package { 'java':
-    name => 'java-latest-openjdk.x86_64',
-    ensure => 'installed',
-    provider => 'dnf'
-  }
-  -> file { '/opt/minecraft':
-      ensure => directory,
-  }
-  -> file { 'eula.txt':
-      path => "/opt/minecraft/eula.txt",
-      ensure => present,
-      source => "/vagrant/eula.txt",
-  }
-  -> file { 'minecraft':
-      path => "/opt/minecraft/server.jar",
-      source => "https://piston-data.mojang.com/v1/objects/84194a2f286ef7c14ed7ce0090dba59902951553/server.jar",
-      mode => "755",
-  }
-  -> file { 'minecraft_service':
-      path => "/etc/systemd/system/minecraft.service",
-      ensure => present,
-      source => "/vagrant/minecraft.service",
-  }
-  ~> service { 'minecraft':
-      ensure => running,
-  }
+  include minecraft
 }
 
 node master.puppet {
@@ -32,13 +7,13 @@ node master.puppet {
 
   nginx::resource::server { 'proxy1':
     server_name => ['localhost'],
-    listen_port => 8083,
+    listen_port => 8080,
     proxy       => 'http://192.168.50.3:80/',
   }
 
   nginx::resource::server { 'proxy2':
     server_name => ['localhost'],
-    listen_port => 8084,
+    listen_port => 8080,
     proxy       => 'http://192.168.50.4:80/',
   }
 }
