@@ -6,13 +6,16 @@ node master.puppet {
   class { selinux:
     mode => 'disabled',
   }
-  -> class{'nginx': }
-  -> nginx::resource::server { 'proxy1':
+
+  class{'nginx': }
+
+  nginx::resource::server { 'proxy1':
       server_name => ['localhost'],
       listen_port => 8080,
       proxy       => 'http://192.168.50.3:80/',
   }
-  -> nginx::resource::server { 'proxy2':
+
+  nginx::resource::server { 'proxy2':
       server_name => ['localhost'],
       listen_port => 8080,
       proxy       => 'http://192.168.50.4:80/',
