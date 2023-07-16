@@ -48,9 +48,11 @@ node master.puppet {
 
   include nginx
 
-  nginx::resource::server { 'localhost':
+  nginx::resource::server { 'test.local:8080':
+    ensure      => present,
     listen_port => 8083,
-    proxy       => 'http://192.168.50.4:80/',
+    server_name => ['test.local test'],
+    proxy       => 'http://proxypass',
   }
 }
 
