@@ -17,7 +17,7 @@ node mineserver.puppet {
   }
 
   package { 'java':
-    ensure => 'latest',
+    ensure => 'absent',
   }
 }
 
