@@ -46,19 +46,9 @@ node master.puppet {
     enable => false,
   }
 
-  file { '/etc/nginx/nginx.conf':
-    ensure => present,
-    source => "/vagrant/nginx.conf",
-  }
-
-  service { 'nginx':
-    ensure => running,
-    enable => true,
-  }
-
-  service { 'php-fpm':
-    ensure => running,
-    enable => true,
+  nginx::resource::server { 'localhost':
+    listen_port => 8083,
+    proxy       => 'http://192.168.50.4:80/',
   }
 }
 
