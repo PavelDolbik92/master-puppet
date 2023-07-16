@@ -31,13 +31,13 @@ node master.puppet {
   class{'nginx': }
 
   nginx::resource::server { 'proxy1':
-    server      => 'localhost',
+    server_name      => 'localhost',
     listen_port => 8083,
     proxy       => 'http://192.168.50.3:80/',
   }
 
   nginx::resource::server { 'proxy2':
-    server      => 'localhost',
+    server_name      => 'localhost',
     listen_port => 8084,
     proxy       => 'http://192.168.50.4:80/',
   }
