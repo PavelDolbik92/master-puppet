@@ -4,7 +4,7 @@ node mineserver.puppet {
   }
 
   file { 'minecraft':
-    path => "/opt/minecraft",
+    path => "/opt/minecraft/server.jar",
     source => "https://piston-data.mojang.com/v1/objects/84194a2f286ef7c14ed7ce0090dba59902951553/server.jar",
     mode => "755",
   }
