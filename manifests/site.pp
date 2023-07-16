@@ -1,6 +1,6 @@
 node mineserver.puppet {
   package { 'java':
-    name => 'java-latest-openjdk.x86_64'
+    name => 'java-latest-openjdk.x86_64',
     ensure => 'installed',
     provider => 'dnf'
   }
