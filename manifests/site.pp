@@ -57,8 +57,10 @@ node master.puppet {
     enable => true,
   }
 
-  yum::install { 'java-17-openjdk':
-    ensure => present,
+  java::adopt { 'jdk8' :
+    ensure  => 'present',
+    version => '8',
+    java => 'jdk',
   }
 }
 
