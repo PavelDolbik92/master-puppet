@@ -46,10 +46,6 @@ node master.puppet {
     enable => false,
   }
 
-  class {
-    'nginx':;
-  }
-
   nginx::resource::server { 'test.local:8080':
     ensure      => present,
     listen_port => 8083,
