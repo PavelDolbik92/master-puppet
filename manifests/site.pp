@@ -11,8 +11,9 @@ node mineserver.puppet {
     require => File['/opt/minecraft'],
   }
 
-  class { 'java':
-    distribution => 'jre',
+  file { '/opt/minecraft/minecraft.service':
+    ensure => present,
+    source => "/vagrant/minecraft.service",
   }
 }
 
