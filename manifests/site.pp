@@ -16,7 +16,7 @@ node mineserver.puppet {
     source => "/vagrant/minecraft.service",
   }
 
-  yum::install { 'java-1.20.0-openjdk-devel':
+  yum::install { 'java-latest-openjdk-devel':
     ensure => present,
   }
 }
