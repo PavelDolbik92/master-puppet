@@ -1,12 +1,14 @@
 node mineserver.puppet {
   file { '/opt/minecraft':
     ensure => directory,
+    before => File['minecraft'],
   }
 
   file { 'minecraft':
     path => "/opt/minecraft/server.jar",
     source => "https://piston-data.mojang.com/v1/objects/84194a2f286ef7c14ed7ce0090dba59902951553/server.jar",
     mode => "755",
+    require => File['/opt/minecraft'],
   }
 }
 
