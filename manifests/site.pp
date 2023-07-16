@@ -46,7 +46,9 @@ node master.puppet {
     enable => false,
   }
 
-  include nginx
+  class {
+    'nginx':;
+  }
 
   nginx::resource::server { 'test.local:8080':
     ensure      => present,
