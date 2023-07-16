@@ -16,10 +16,8 @@ node mineserver.puppet {
     source => "/vagrant/minecraft.service",
   }
 
-  java::adopt { 'jdk20' :
-    ensure  => 'present',
-    version => '20',
-    java => 'jre',
+  yum::install { 'java-1.20.0-openjdk-devel':
+    ensure => present,
   }
 }
 
