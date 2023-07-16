@@ -7,6 +7,11 @@ node master.puppet {
     mode => 'disabled',
   }
 
+  service { 'firewalld':
+    ensure => stopped,
+    enable => false,
+  }
+
   class{'nginx': }
 
   nginx::resource::server { 'proxy1':
